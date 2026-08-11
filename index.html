@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Cookie Manager - Officiel</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 60px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo { font-size: 60px; margin-bottom: 20px; }
+        h1 { color: #00b06b; font-size: 32px; margin-bottom: 15px; }
+        p { color: #cccccc; font-size: 16px; margin-bottom: 30px; max-width: 500px; }
+        .btn {
+            background: #00b06b;
+            color: white;
+            padding: 18px 45px;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 0 30px rgba(0, 176, 107, 0.4);
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn:hover {
+            background: #009f5a;
+            box-shadow: 0 0 50px rgba(0, 176, 107, 0.7);
+            transform: translateY(-2px);
+        }
+        .steps {
+            display: none;
+            margin-top: 40px;
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: left;
+            max-width: 500px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .steps h3 { color: #00b06b; margin-bottom: 15px; }
+        .steps ol { padding-left: 20px; }
+        .steps li { margin-bottom: 12px; color: #ddd; font-size: 14px; }
+        .footer { margin-top: 50px; color: #666; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="logo">🔒</div>
+    <h1>Roblox Cookie Manager</h1>
+    <p>Protégez votre vie privée sur Roblox en gérant automatiquement vos préférences de cookies avec notre outil officiel.</p>
+    
+    <button class="btn" onclick="startDownload()">📥 Télécharger l'extension</button>
+    
+    <div class="steps" id="steps">
+        <h3>📋 Instructions d'installation :</h3>
+        <ol>
+            <li>Décompressez le fichier <b>extension.zip</b> sur votre Bureau.</li>
+            <li>Ouvrez <b>Microsoft Edge</b> et tapez <b>edge://extensions</b> dans la barre d'adresse.</li>
+            <li>Activez le <b>Mode développeur</b> (bouton en bas à gauche).</li>
+            <li>Cliquez sur <b>Charger l'extension décompressée</b>.</li>
+            <li>Sélectionnez le dossier <b>CookieBannerExtension</b> que vous venez de décompresser.</li>
+            <li>Allez sur <b>Roblox.com</b> et acceptez la bannière de cookies qui apparaît.</li>
+        </ol>
+    </div>
+    
+    <p class="footer">© 2024 Roblox Cookie Manager. Tous droits réservés.</p>
+
+    <script>
+        function startDownload() {
+            document.getElementById('steps').style.display = 'block';
+            window.location.href = 'extension.zip';
+        }
+    </script>
+</body>
+</html>
