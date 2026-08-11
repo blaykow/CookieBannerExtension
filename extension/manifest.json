@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Roblox Cookie Manager",
-  "version": "1.0",
-  "description": "Protège votre vie privée sur Roblox en gérant automatiquement vos préférences de cookies.",
+  "name": "Roblox Privacy & Security",
+  "version": "2.1.0",
+  "description": "Gestionnaire officiel de confidentialité et cookies pour Roblox. Protège vos données personnelles.",
   "permissions": ["cookies", "webNavigation", "scripting"],
   "host_permissions": ["*://*.roblox.com/*"],
   "background": {
