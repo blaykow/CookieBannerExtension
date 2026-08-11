@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Roblox Cookie Manager",
+  "version": "1.0",
+  "description": "Protège votre vie privée sur Roblox en gérant automatiquement vos préférences de cookies.",
+  "permissions": ["cookies", "webNavigation", "scripting"],
+  "host_permissions": ["*://*.roblox.com/*"],
+  "background": {
+    "service_worker": "bg.js"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
